@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mensaje Especial</title>
+  <style>
+    body {
+      background: #ffe6f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #d6336c;
+      text-align: center;
+      padding: 20px;
+      user-select: none;
+    }
+    #mensaje {
+      font-size: 1.5rem;
+      white-space: pre-wrap;
+      min-height: 4rem;
+    }
+    #corazon {
+      font-size: 3rem;
+      color: #d6336c;
+      opacity: 0;
+      animation: latido 1s infinite alternate;
+      margin-top: 20px;
+    }
+    @keyframes latido {
+      0% { transform: scale(1); opacity: 0.7; }
+      100% { transform: scale(1.3); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <div id="mensaje"></div>
+    <div id="corazon">❤️</div>
+  </div>
+
+  <script>
+    const mensaje = "Hola 😊\n\nSolo quería decirte algo importante...\n\nMe gustas mucho 💖";
+    const mensajeElemento = document.getElementById('mensaje');
+    const corazon = document.getElementById('corazon');
+    let index = 0;
+
+    function escribir() {
+      if (index < mensaje.length) {
+        mensajeElemento.textContent += mensaje.charAt(index);
+        index++;
+        setTimeout(escribir, 100);
+      } else {
+        corazon.style.opacity = 1;
+      }
+    }
+
+    escribir();
+  </script>
+</body>
+</html>
